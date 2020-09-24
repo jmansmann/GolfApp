@@ -1,0 +1,102 @@
+﻿@page
+@model GolfApp.Pages.Courses.IndexCourseModel
+
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="CreateCourse">Create New</a>
+</p>
+
+<form asp-page="./IndexCourse" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./IndexCourse">Back to full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./IndexCourse" asp-route-sortOrder="@Model.NameSort" asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Courses[0].Name)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].Par)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses[0].Type)
+            </th>
+            <th>
+                <a asp-page="./IndexCourse" asp-route-sortOrder="@Model.DateSort" asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Courses[0].DateFounded)
+                </a>
+            </th>
+            <th>
+                @Html.Raw("Number of Holes")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Courses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.UniqueName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Par)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => GolfApp.Util.CommonUtils.GetAttribute<System.ComponentModel.DataAnnotations.DisplayAttribute>(item.Type).Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateFounded)
+                </td>
+                <td>
+                    @item.Holes?.Count.ToString()
+                </td>
+                <td>
+                    <a asp-page="./EditCourse" asp-route-id="@item.CourseId">Edit</a> |
+                    <a asp-page="./DetailsCourse" asp-route-id="@item.CourseId">Details</a> |
+                    <a asp-page="./DeleteCourse" asp-route-id="@item.CourseId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{ 
+    var prevDisabled = !Model.Courses.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Courses.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./IndexCourse"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Courses.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./IndexCourse"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Courses.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>

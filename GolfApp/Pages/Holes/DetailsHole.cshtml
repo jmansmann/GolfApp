@@ -1,0 +1,38 @@
+﻿@page
+@model GolfApp.Pages.Holes.DetailsHoleModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Hole</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Hole.Par)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Hole.Par)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Hole.Num)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Hole.Num)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayText("Course Name")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Hole.Course.Name)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-page="./EditHole" asp-route-id="@Model.Hole.HoleId">Edit</a> |
+    <a asp-page="./IndexHole">Back to List</a>
+</div>

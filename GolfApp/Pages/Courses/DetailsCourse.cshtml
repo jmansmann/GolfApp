@@ -1,0 +1,70 @@
+﻿@page
+@model GolfApp.Pages.Courses.DetailsCourseModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Location.UniqueName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Par)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Par)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.DateFounded)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Course.DateFounded)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Course.Holes)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Hole Number</th>
+                    <th>Par</th>
+                </tr>
+                @foreach (var item in Model.Course.Holes)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Num)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Par)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./EditCourse" asp-route-id="@Model.Course.CourseId">Edit</a> |
+    <a asp-page="./IndexCourse">Back to List</a>
+</div>

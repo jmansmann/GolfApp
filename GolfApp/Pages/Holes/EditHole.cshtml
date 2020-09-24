@@ -1,0 +1,44 @@
+﻿@page
+@model GolfApp.Pages.Holes.EditHoleModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Hole</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Hole.HoleId" />
+            <div class="form-group">
+                <label asp-for="Hole.Par" class="control-label"></label>
+                <input asp-for="Hole.Par" class="form-control" />
+                <span asp-validation-for="Hole.Par" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hole.Num" class="control-label"></label>
+                <input asp-for="Hole.Num" class="form-control" />
+                <span asp-validation-for="Hole.Num" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hole.CourseId" class="control-label"></label>
+                <select asp-for="Hole.CourseId" class="form-control" asp-items="ViewBag.Courses"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./IndexHole">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,31 @@
+﻿@page
+@model GolfApp.Pages.AboutModel
+
+@{
+    ViewData["Title"] = "Course Statistics";
+}
+
+<h2>Student Body Statistics</h2>
+
+<table>
+    <tr>
+        <th>
+            Enrollment Date
+        </th>
+        <th>
+            Students
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Courses)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateFounded)
+            </td>
+            <td>
+                @item.CourseCount
+            </td>
+        </tr>
+    }
+</table>

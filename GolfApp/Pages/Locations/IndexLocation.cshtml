@@ -1,0 +1,54 @@
+﻿@page
+@model GolfApp.Pages.Locations.IndexLocationModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="CreateLocation">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Location[0].Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location[0].State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location[0].City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location[0].ZipCode)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Location) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                <a asp-page="./EditLocation" asp-route-id="@item.LocationId">Edit</a> |
+                <a asp-page="./DetailsLocation" asp-route-id="@item.LocationId">Details</a> |
+                <a asp-page="./DeleteLocation" asp-route-id="@item.LocationId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

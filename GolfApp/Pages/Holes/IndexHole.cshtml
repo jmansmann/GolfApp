@@ -1,0 +1,50 @@
+﻿@page
+@model GolfApp.Pages.Holes.IndexHoleModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="CreateHole">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Hole[0].Par)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hole[0].Num)
+            </th>
+            <th>
+                @Html.DisplayText("Course Name")
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Hole) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Par)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Num)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Name)
+            </td>
+
+            <td>
+                <a asp-page="./EditHole" asp-route-id="@item.HoleId">Edit</a> |
+                <a asp-page="./DetailsHole" asp-route-id="@item.HoleId">Details</a> |
+                <a asp-page="./DeleteHole" asp-route-id="@item.HoleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
