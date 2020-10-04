@@ -13,8 +13,8 @@ namespace GolfApp.Pages
 {
     public class AboutModel : PageModel
     {
-        private readonly GolfAppCourseContext _context;
-        public AboutModel(GolfAppCourseContext context)
+        private readonly CourseContext _context;
+        public AboutModel(CourseContext context)
         {
             _context = context;   
         }
@@ -23,7 +23,7 @@ namespace GolfApp.Pages
         public async Task OnGet()
         {
             IQueryable<CourseDateFoundedGroup> data =
-                from c in _context.Course
+                from c in _context.Courses
                 group c by c.DateFounded into dateGroup
                 select new CourseDateFoundedGroup()
                 {

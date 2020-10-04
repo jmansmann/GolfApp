@@ -12,9 +12,9 @@ namespace GolfApp.Pages.Courses
 {
     public class DetailsCourseModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public DetailsCourseModel(GolfApp.Data.GolfAppCourseContext context)
+        public DetailsCourseModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
@@ -28,7 +28,7 @@ namespace GolfApp.Pages.Courses
                 return NotFound();
             }
 
-            Course = await _context.Course
+            Course = await _context.Courses
                 .Include(c => c.Location).Include(c => c.Holes).FirstOrDefaultAsync(m => m.CourseId == id);
 
             if (Course == null)

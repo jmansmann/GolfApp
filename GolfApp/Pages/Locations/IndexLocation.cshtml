@@ -10,35 +10,50 @@
 <p>
     <a asp-page="CreateLocation">Create New</a>
 </p>
+
+<form asp-page="./IndexLocation" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./IndexLocation">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Location[0].Country)
+                <a asp-page="./IndexLocation" asp-route-sortOrder="@Model.CityNameSort" asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Locations[0].City)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Location[0].State)
+                @Html.DisplayNameFor(model => model.Locations[0].Country)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Location[0].City)
+                @Html.DisplayNameFor(model => model.Locations[0].State)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Location[0].ZipCode)
+                @Html.DisplayNameFor(model => model.Locations[0].ZipCode)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Location) {
+       @foreach (var item in Model.Locations)
+        {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Country)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ZipCode)
@@ -49,6 +64,26 @@
                 <a asp-page="./DeleteLocation" asp-route-id="@item.LocationId">Delete</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.Locations.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Locations.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./IndexLocation"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Locations.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./IndexLocation"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Locations.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>

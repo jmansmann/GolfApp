@@ -13,9 +13,9 @@ namespace GolfApp.Pages.Courses
 {
     public class EditCourseModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public EditCourseModel(GolfApp.Data.GolfAppCourseContext context)
+        public EditCourseModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
@@ -30,14 +30,14 @@ namespace GolfApp.Pages.Courses
                 return NotFound();
             }
 
-            Course = await _context.Course
+            Course = await _context.Courses
                 .Include(c => c.Location).FirstOrDefaultAsync(m => m.CourseId == id);
 
             if (Course == null)
             {
                 return NotFound();
             }
-            ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "UniqueName");
+            ViewData["LocationId"] = new SelectList(_context.Locations, "LocationId", "UniqueName");
             return Page();
         }
 
@@ -50,7 +50,7 @@ namespace GolfApp.Pages.Courses
                 return Page();
             }
 
-            var courseToUpdate = await _context.Course.FindAsync(id);
+            var courseToUpdate = await _context.Courses.FindAsync(id);
             if (courseToUpdate == null)
             {
                 return NotFound();
@@ -83,7 +83,7 @@ namespace GolfApp.Pages.Courses
 
         private bool CourseExists(int id)
         {
-            return _context.Course.Any(e => e.CourseId == id);
+            return _context.Courses.Any(e => e.CourseId == id);
         }
     }
 }

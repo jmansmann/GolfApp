@@ -12,9 +12,9 @@ namespace GolfApp.Pages.Locations
 {
     public class CreateLocationModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public CreateLocationModel(GolfApp.Data.GolfAppCourseContext context)
+        public CreateLocationModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
@@ -36,7 +36,7 @@ namespace GolfApp.Pages.Locations
                 return Page();
             }
 
-            _context.Location.Add(Location);
+            _context.Locations.Add(Location);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./IndexLocation");

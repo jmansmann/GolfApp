@@ -12,9 +12,9 @@ namespace GolfApp.Pages.Locations
 {
     public class DetailsLocationModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public DetailsLocationModel(GolfApp.Data.GolfAppCourseContext context)
+        public DetailsLocationModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
@@ -28,9 +28,9 @@ namespace GolfApp.Pages.Locations
                 return NotFound();
             }
 
-            Location = await _context.Location.FirstOrDefaultAsync(m => m.LocationId == id);
+            Location = await _context.Locations.FirstOrDefaultAsync(m => m.LocationId == id);
 
-            ViewData["Courses"] = await _context.Course.Where(c => c.LocationId == id).ToListAsync<Course>();
+            ViewData["Courses"] = await _context.Courses.Where(c => c.LocationId == id).ToListAsync<Course>();
             if (Location == null)
             {
                 return NotFound();

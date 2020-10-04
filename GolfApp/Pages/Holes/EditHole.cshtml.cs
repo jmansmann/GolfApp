@@ -13,9 +13,9 @@ namespace GolfApp.Pages.Holes
 {
     public class EditHoleModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public EditHoleModel(GolfApp.Data.GolfAppCourseContext context)
+        public EditHoleModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
@@ -30,9 +30,9 @@ namespace GolfApp.Pages.Holes
                 return NotFound();
             }
 
-            Hole = await _context.Hole.FirstOrDefaultAsync(m => m.HoleId == id);
+            Hole = await _context.Holes.FirstOrDefaultAsync(m => m.HoleId == id);
 
-            var courses = await _context.Course.Select(c => new
+            var courses = await _context.Courses.Select(c => new
             { 
                 c.CourseId,
                 c.Name
@@ -51,7 +51,7 @@ namespace GolfApp.Pages.Holes
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync(int id)
         {
-            var holeToUpdate = await _context.Hole.FindAsync(id);
+            var holeToUpdate = await _context.Holes.FindAsync(id);
 
             if (holeToUpdate == null)
             {
@@ -84,7 +84,7 @@ namespace GolfApp.Pages.Holes
 
         private bool HoleExists(int id)
         {
-            return _context.Hole.Any(e => e.HoleId == id);
+            return _context.Holes.Any(e => e.HoleId == id);
         }
     }
 }

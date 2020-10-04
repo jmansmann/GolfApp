@@ -13,16 +13,16 @@ namespace GolfApp.Pages.Holes
 {
     public class CreateHoleModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public CreateHoleModel(GolfApp.Data.GolfAppCourseContext context)
+        public CreateHoleModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
 
         public IActionResult OnGet()
         {
-            var courses = _context.Course.ToList();
+            var courses = _context.Courses.ToList();
             ViewData["Courses"] = new SelectList(courses, "CourseId", "Name");
             return Page();
         }
@@ -43,7 +43,7 @@ namespace GolfApp.Pages.Holes
             if (await TryUpdateModelAsync<Hole>(emptyHole, "hole",
                 h => h.Par, h => h.CourseId, h => h.Num))
             {
-                _context.Hole.Add(emptyHole);
+                _context.Holes.Add(emptyHole);
                 await _context.SaveChangesAsync();
             }
 

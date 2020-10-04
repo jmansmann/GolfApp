@@ -13,9 +13,9 @@ namespace GolfApp.Pages.Courses
 {
     public class IndexCourseModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public IndexCourseModel(GolfApp.Data.GolfAppCourseContext context)
+        public IndexCourseModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
@@ -45,7 +45,7 @@ namespace GolfApp.Pages.Courses
 
             CurrentFilter = searchString;
 
-            IQueryable<Course> coursesIQ = _context.Course;
+            IQueryable<Course> coursesIQ = _context.Courses.Include(c => c.Holes);
 
             if(!string.IsNullOrWhiteSpace(searchString))
             {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GolfApp.Migrations
 {
-    public partial class locationid : Migration
+    public partial class coursename : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

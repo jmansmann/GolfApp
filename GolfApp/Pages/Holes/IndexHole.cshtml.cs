@@ -12,9 +12,9 @@ namespace GolfApp.Pages.Holes
 {
     public class IndexHoleModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public IndexHoleModel(GolfApp.Data.GolfAppCourseContext context)
+        public IndexHoleModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
@@ -23,7 +23,7 @@ namespace GolfApp.Pages.Holes
 
         public async Task OnGetAsync()
         {
-            Hole = await _context.Hole.Include(h => h.Course).ToListAsync();
+            Hole = await _context.Holes.Include(h => h.Course).ToListAsync();
         }
     }
 }

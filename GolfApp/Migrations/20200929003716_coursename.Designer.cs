@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GolfApp.Migrations
 {
-    [DbContext(typeof(GolfAppCourseContext))]
-    [Migration("20200920211721_locationid")]
-    partial class locationid
+    [DbContext(typeof(CourseContext))]
+    [Migration("20200929003716_coursename")]
+    partial class coursename
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

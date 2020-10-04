@@ -12,9 +12,9 @@ namespace GolfApp.Pages.Courses
 {
     public class DeleteCourseModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public DeleteCourseModel(GolfApp.Data.GolfAppCourseContext context)
+        public DeleteCourseModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
@@ -30,7 +30,7 @@ namespace GolfApp.Pages.Courses
                 return NotFound();
             }
 
-            Course = await _context.Course.AsNoTracking()
+            Course = await _context.Courses.AsNoTracking()
                 .Include(c => c.Location).Include(c => c.Holes).FirstOrDefaultAsync(m => m.CourseId == id);
 
             if (Course == null)
@@ -52,7 +52,7 @@ namespace GolfApp.Pages.Courses
                 return NotFound();
             }
 
-            var courseToDelete = await _context.Course.Where(c => c.CourseId == id).Include(c => c.Holes).ToListAsync();
+            var courseToDelete = await _context.Courses.Where(c => c.CourseId == id).Include(c => c.Holes).ToListAsync();
 
             if (courseToDelete == null)
             {
@@ -61,7 +61,7 @@ namespace GolfApp.Pages.Courses
 
             try
             {
-                _context.Course.Remove(courseToDelete.FirstOrDefault());
+                _context.Courses.Remove(courseToDelete.FirstOrDefault());
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./IndexCourse");
             }

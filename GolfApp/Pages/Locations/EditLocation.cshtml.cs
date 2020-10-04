@@ -13,9 +13,9 @@ namespace GolfApp.Pages.Locations
 {
     public class EditLocationModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public EditLocationModel(GolfApp.Data.GolfAppCourseContext context)
+        public EditLocationModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
@@ -30,7 +30,7 @@ namespace GolfApp.Pages.Locations
                 return NotFound();
             }
 
-            Location = await _context.Location.FirstOrDefaultAsync(m => m.LocationId == id);
+            Location = await _context.Locations.FirstOrDefaultAsync(m => m.LocationId == id);
 
             if (Location == null)
             {
@@ -71,7 +71,7 @@ namespace GolfApp.Pages.Locations
 
         private bool LocationExists(int id)
         {
-            return _context.Location.Any(e => e.LocationId == id);
+            return _context.Locations.Any(e => e.LocationId == id);
         }
     }
 }

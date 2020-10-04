@@ -13,11 +13,11 @@ namespace GolfApp.Models
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new GolfAppCourseContext(
+            using (var context = new CourseContext(
                 serviceProvider.GetRequiredService<
-                    DbContextOptions<GolfAppCourseContext>>()))
+                    DbContextOptions<CourseContext>>()))
             {
-                if (context.Course.Any())
+                if (context.Courses.Any())
                     return;
                 var locations = new Location[]
                 {
@@ -79,6 +79,10 @@ namespace GolfApp.Models
                 context.SaveChanges();
                 InitializeSomeHoles(context);
                 context.SaveChanges();
+                InitializeRoundsOfGolf(context);
+                context.SaveChanges();
+                IntializeGolfers(context);
+                context.SaveChanges();
                 //InitializeLocations(context);
                 //context.SaveChanges();
                 //InitializeCourses(context);
@@ -86,14 +90,89 @@ namespace GolfApp.Models
             }
         }
 
-        private static void InitializeSomeHoles(GolfAppCourseContext context)
+        private static void InitializeRoundsOfGolf(CourseContext context)
         {
-            if (context.Hole.Any())
+            if (context.Rounds.Any())
+            {
+                return;
+            }
+            var courseIdList = context.Courses.Select(c => c.CourseId).ToList();
+
+            context.Rounds.AddRange(
+                new Round
+                {
+                    DatePlayed = DateTime.Parse("09/23/2020"),
+                    Score = 65,
+                    CourseId = courseIdList.FirstOrDefault()
+                },
+                new Round
+                {
+                    DatePlayed = DateTime.Parse("09/24/2020"),
+                    Score = 70,
+                    CourseId = courseIdList.ElementAt(1)
+                },
+                new Round
+                {
+                    DatePlayed = DateTime.Parse("09/25/2020"),
+                    Score = 69,
+                    CourseId = courseIdList.ElementAt(1)
+                },
+                new Round
+                {
+                    DatePlayed = DateTime.Parse("10/01/2020"),
+                    Score = 80,
+                    CourseId = courseIdList.ElementAt(2)
+                },
+                new Round
+                {
+                    DatePlayed = DateTime.Parse("10/02/2020"),
+                    Score = 75,
+                    CourseId = courseIdList.ElementAt(3)
+                });
+        }
+
+        private static void IntializeGolfers(CourseContext context)
+        {
+            if (context.Golfers.Any())
             {
                 return;
             }
 
-            context.Hole.AddRange(
+            var roundsIdList = context.Rounds.Select(r => r.RoundId).ToList();
+
+            context.Golfers.AddRange(
+                new Golfer
+                {
+                    FirstName = "Jim",
+                    LastName = "Mansmann",
+                    Sex = Sex.Male,
+                    RoundsPlayed = context.Rounds.Where(r => r.RoundId == roundsIdList.FirstOrDefault()).ToList()
+                },
+                new Golfer
+                {
+                    FirstName = "Seth",
+                    LastName = "Bowser",
+                    Sex = Sex.Male,
+                    RoundsPlayed = context.Rounds.Where(r => r.RoundId == roundsIdList.ElementAt(2)).ToList()
+                },
+                new Golfer
+                {
+                    FirstName = "Kristen",
+                    LastName = "Zulli",
+                    Sex = Sex.Female,
+                    RoundsPlayed = context.Rounds.Where(r => r.RoundId == roundsIdList.ElementAt(3)).ToList()
+                }
+                );
+        }
+
+        private static void InitializeSomeHoles(CourseContext context)
+        {
+            if (context.Holes.Any())
+            {
+                return;
+            }
+
+            context.Holes.AddRange(
                 new Hole
                 {
                     Num = 1,
@@ -207,14 +286,14 @@ namespace GolfApp.Models
         }
 
 
-        private static void InitializeLocations (GolfAppCourseContext context)
+        private static void InitializeLocations (CourseContext context)
         {
-            if (context.Location.Any())
+            if (context.Locations.Any())
             {
                 return;
             }
 
-            context.Location.AddRange(
+            context.Locations.AddRange(
                 new Location
                 {
                     Country = "USA",
@@ -259,18 +338,18 @@ namespace GolfApp.Models
                 }
             );
         }
-        private static void InitializeCourses(GolfAppCourseContext context)
+        private static void InitializeCourses(CourseContext context)
         {
             // Look for any movies.
-            if (context.Course.Any())
+            if (context.Courses.Any())
             {
                 return;   // DB has been seeded
             }
 
-            var locationIdList = context.Location.Select(x => x.LocationId).ToList();
-            var holeList = (from c in context.Hole select c).ToList();
+            var locationIdList = context.Locations.Select(x => x.LocationId).ToList();
+            var holeList = (from c in context.Holes select c).ToList();
 
-            context.Course.AddRange(
+            context.Courses.AddRange(
                 new Course
                 {
                     Name = "Rusty Jawn",

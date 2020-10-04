@@ -12,9 +12,9 @@ namespace GolfApp.Pages.Holes
 {
     public class DetailsHoleModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public DetailsHoleModel(GolfApp.Data.GolfAppCourseContext context)
+        public DetailsHoleModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
@@ -28,7 +28,7 @@ namespace GolfApp.Pages.Holes
                 return NotFound();
             }
 
-            Hole = await _context.Hole.Include(h => h.Course).FirstOrDefaultAsync(m => m.HoleId == id);
+            Hole = await _context.Holes.Include(h => h.Course).FirstOrDefaultAsync(m => m.HoleId == id);
 
             if (Hole == null)
             {

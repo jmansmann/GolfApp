@@ -12,9 +12,9 @@ namespace GolfApp.Pages.Holes
 {
     public class DeleteHoleModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public DeleteHoleModel(GolfApp.Data.GolfAppCourseContext context)
+        public DeleteHoleModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
@@ -30,7 +30,7 @@ namespace GolfApp.Pages.Holes
                 return NotFound();
             }
 
-            Hole = await _context.Hole.FirstOrDefaultAsync(m => m.HoleId == id);
+            Hole = await _context.Holes.FirstOrDefaultAsync(m => m.HoleId == id);
 
             if (Hole == null)
             {
@@ -52,7 +52,7 @@ namespace GolfApp.Pages.Holes
                 return NotFound();
             }
 
-            Hole = await _context.Hole.FindAsync(id);
+            Hole = await _context.Holes.FindAsync(id);
 
             if (Hole == null)
             {
@@ -61,7 +61,7 @@ namespace GolfApp.Pages.Holes
 
             try
             {
-                _context.Hole.Remove(Hole);
+                _context.Holes.Remove(Hole);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./IndexHole");
 

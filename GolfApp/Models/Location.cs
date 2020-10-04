@@ -9,11 +9,13 @@ namespace GolfApp.Models
     {
        public int LocationId { get; set; }
 
+        [StringLength(50)]
         public string Country { get; set; }
 
         [StringLength(20)]
         public string State { get; set; }
 
+        [StringLength(50)]
         public string City { get { return city; } set { city = value; } }
         private string city;
 

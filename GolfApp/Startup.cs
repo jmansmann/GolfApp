@@ -27,8 +27,8 @@ namespace GolfApp
         {
             if (Environment.IsDevelopment())
             {
-                services.AddDbContext<GolfAppCourseContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("GolfAppCourseContext")));
+                services.AddDbContext<CourseContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("CourseContext")));
 
                 // services.AddDbContext<GolfAppHoleContext>(options =>
                 //     options.UseSqlite(Configuration.GetConnectionString("HoleContext")));
@@ -42,8 +42,8 @@ namespace GolfApp
             }
             else
             {
-                services.AddDbContext<GolfAppCourseContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("GolfAppCourseContext")));
+                services.AddDbContext<CourseContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("CourseContext")));
 
                 // services.AddDbContext<GolfAppHoleContext>(options =>
                 //     options.UseSqlServer(Configuration.GetConnectionString("HoleContext")));

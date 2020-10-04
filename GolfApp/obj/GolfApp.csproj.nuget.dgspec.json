@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jimmy\\Documents\\golf_app\\GolfApp\\GolfApp.csproj": {}
+    "C:\\Users\\Jimmy\\Documents\\golf_app\\GolfApp\\GolfApp\\GolfApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jimmy\\Documents\\golf_app\\GolfApp\\GolfApp.csproj": {
+    "C:\\Users\\Jimmy\\Documents\\golf_app\\GolfApp\\GolfApp\\GolfApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jimmy\\Documents\\golf_app\\GolfApp\\GolfApp.csproj",
+        "projectUniqueName": "C:\\Users\\Jimmy\\Documents\\golf_app\\GolfApp\\GolfApp\\GolfApp.csproj",
         "projectName": "GolfApp",
-        "projectPath": "C:\\Users\\jimmy\\Documents\\golf_app\\GolfApp\\GolfApp.csproj",
-        "packagesPath": "C:\\Users\\jimmy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jimmy\\Documents\\golf_app\\GolfApp\\obj\\",
+        "projectPath": "C:\\Users\\Jimmy\\Documents\\golf_app\\GolfApp\\GolfApp\\GolfApp.csproj",
+        "packagesPath": "C:\\Users\\Jimmy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jimmy\\Documents\\golf_app\\GolfApp\\GolfApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jimmy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jimmy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

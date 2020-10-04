@@ -15,16 +15,16 @@ namespace GolfApp.Pages.Courses
 {
     public class CreateCourseModel : PageModel
     {
-        private readonly GolfApp.Data.GolfAppCourseContext _context;
+        private readonly GolfApp.Data.CourseContext _context;
 
-        public CreateCourseModel(GolfApp.Data.GolfAppCourseContext context)
+        public CreateCourseModel(GolfApp.Data.CourseContext context)
         {
             _context = context;
         }
 
         public IActionResult OnGet()
         {
-            var displayLocations = _context.Location.Select(loc =>
+            var displayLocations = _context.Locations.Select(loc =>
                                                             new SelectListItem
                                                             {
                                                                 Value = loc.LocationId.ToString(),
@@ -41,7 +41,7 @@ namespace GolfApp.Pages.Courses
             
             ViewData["Types"] = new SelectList(Enum.GetValues(typeof(CourseType)).Cast<CourseType>());
 
-            var holes = _context.Hole.Select(h => new
+            var holes = _context.Holes.Select(h => new
             {
                 CourseId = h.CourseId,
                 HoleId = h.HoleId,
@@ -77,7 +77,7 @@ namespace GolfApp.Pages.Courses
             if (await TryUpdateModelAsync<Course>(emptyCourse, "course",
                 c => c.Name, c => c.Par, c => c.LocationId, c => c.DateFounded, c => c.Type))
             {
-                _context.Course.Add(Course);
+                _context.Courses.Add(Course);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./IndexCourse");
