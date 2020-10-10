@@ -1,0 +1,53 @@
+﻿@page
+@model GolfApp.Pages.Rounds.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Rounds</h1>
+
+<p>
+    <a asp-page="CreateRound">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Round[0].Golfer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Round[0].DatePlayed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Round[0].CoursePlayed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Round[0].Score)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Round) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Golfer.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatePlayed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoursePlayed.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score)
+            </td>
+            <td>
+                <a asp-page="./EditRound" asp-route-id="@item.RoundId">Edit</a> |
+                <a asp-page="./DetailsRound" asp-route-id="@item.RoundId">Details</a> |
+                <a asp-page="./DeleteRound" asp-route-id="@item.RoundId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

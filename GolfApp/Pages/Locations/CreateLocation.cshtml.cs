@@ -18,9 +18,8 @@ namespace GolfApp.Pages.Locations
         {
             _context = context;
         }
-
         public IActionResult OnGet()
-        {
+        { 
             return Page();
         }
 

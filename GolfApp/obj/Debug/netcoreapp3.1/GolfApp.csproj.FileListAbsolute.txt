@@ -183,7 +183,6 @@ C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Lo
 C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Locations\DetailsLocation.cshtml.g.cs
 C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Locations\EditLocation.cshtml.g.cs
 C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Locations\IndexLocation.cshtml.g.cs
-C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\GolfApp.csprojAssemblyReference.cache
 C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\About.cshtml.g.cs
 C:\Users\Jimmy\Documents\golf_app\GolfApp\GolfApp\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Jimmy\Documents\golf_app\GolfApp\GolfApp\bin\Debug\netcoreapp3.1\appsettings.json
@@ -372,3 +371,14 @@ C:\Users\Jimmy\Documents\golf_app\GolfApp\GolfApp\obj\Debug\netcoreapp3.1\GolfAp
 C:\Users\Jimmy\Documents\golf_app\GolfApp\GolfApp\obj\Debug\netcoreapp3.1\GolfApp.pdb
 C:\Users\Jimmy\Documents\golf_app\GolfApp\GolfApp\obj\Debug\netcoreapp3.1\GolfApp.genruntimeconfig.cache
 C:\Users\Jimmy\Documents\golf_app\GolfApp\GolfApp\obj\Debug\netcoreapp3.1\GolfApp.csprojAssemblyReference.cache
+C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Rounds\CreateRound.cshtml.g.cs
+C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Rounds\DeleteRound.cshtml.g.cs
+C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Rounds\DetailsRound.cshtml.g.cs
+C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Rounds\EditRound.cshtml.g.cs
+C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Rounds\IndexRound.cshtml.g.cs
+C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Golfers\CreateGolfer.cshtml.g.cs
+C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Golfers\DeleteGolfer.cshtml.g.cs
+C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Golfers\DetailsGolfer.cshtml.g.cs
+C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Golfers\EditGolfer.cshtml.g.cs
+C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\Razor\Pages\Golfers\IndexGolfer.cshtml.g.cs
+C:\Users\jimmy\Documents\golf_app\GolfApp\obj\Debug\netcoreapp3.1\GolfApp.csprojAssemblyReference.cache

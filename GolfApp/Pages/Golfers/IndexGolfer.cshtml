@@ -1,0 +1,61 @@
+﻿@page
+@model GolfApp.Pages.Golfers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Registered Golfers</h1>
+
+<p>
+    <a asp-page="CreateGolfer">Create New</a>
+</p>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Golfer[0].FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Golfer[0].LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Golfer[0].Sex)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Golfer[0].Email)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Golfer)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a asp-page="./EditGolfer" asp-route-id="@item.GolferId">Edit</a> |
+                        <a asp-page="./DetailsGolfer" asp-route-id="@item.GolferId">Details</a> |
+                        <a asp-page="./DeleteGolfer" asp-route-id="@item.GolferId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <h3>Follow to continue app initialization:</h3>
+    <a asp-page="/Locations/CreateLocation">Create New Location</a>
+</div>

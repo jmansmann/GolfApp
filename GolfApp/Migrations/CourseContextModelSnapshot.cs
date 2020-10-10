@@ -15,7 +15,7 @@ namespace GolfApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.7")
+                .HasAnnotation("ProductVersion", "3.1.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -168,7 +168,7 @@ namespace GolfApp.Migrations
                     b.Property<DateTime>("DatePlayed")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("GolferId")
+                    b.Property<int>("GolferId")
                         .HasColumnType("int");
 
                     b.Property<int>("Score")
@@ -222,9 +222,11 @@ namespace GolfApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GolfApp.Models.Golfer", null)
+                    b.HasOne("GolfApp.Models.Golfer", "Golfer")
                         .WithMany("RoundsPlayed")
-                        .HasForeignKey("GolferId");
+                        .HasForeignKey("GolferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

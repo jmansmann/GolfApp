@@ -73,7 +73,94 @@ namespace GolfApp.Data
                 context.SaveChanges();
                 InitializeSomeHoles(context);
                 context.SaveChanges();
+                IntializeGolfers(context);
+                context.SaveChanges();
+                InitializeRoundsOfGolf(context);
+                context.SaveChanges();
+
         }
+
+        private static void InitializeRoundsOfGolf(CourseContext context)
+        {
+            if (context.Rounds.Any())
+            {
+                return;
+            }
+            var courseIdList = context.Courses.Select(c => c.CourseId).ToList(); 
+            var golferIdList = context.Golfers.Select(g => g.GolferId).ToList();
+
+            context.Rounds.AddRange(
+                new Round
+                {
+                    DatePlayed = DateTime.Parse("09/23/2020"),
+                    Score = 65,
+                    CourseId = courseIdList.FirstOrDefault(),
+                    GolferId = golferIdList.ElementAt(1)
+                },
+                new Round
+                {
+                    DatePlayed = DateTime.Parse("09/24/2020"),
+                    Score = 70,
+                    CourseId = courseIdList.ElementAt(1),
+                    GolferId = golferIdList.ElementAt(1)
+                },
+                new Round
+                {
+                    DatePlayed = DateTime.Parse("09/25/2020"),
+                    Score = 69,
+                    CourseId = courseIdList.ElementAt(1),
+                    GolferId = golferIdList.ElementAt(2)
+                },
+                new Round
+                {
+                    DatePlayed = DateTime.Parse("10/01/2020"),
+                    Score = 80,
+                    CourseId = courseIdList.ElementAt(2),
+                    GolferId = golferIdList.ElementAt(2)
+                },
+                new Round
+                {
+                    DatePlayed = DateTime.Parse("10/02/2020"),
+                    Score = 75,
+                    CourseId = courseIdList.ElementAt(3),
+                    GolferId = golferIdList.ElementAt(0)
+                });
+        }
+
+        private static void IntializeGolfers(CourseContext context)
+        {
+            if (context.Golfers.Any())
+            {
+                return;
+            }
+
+            var roundsIdList = context.Rounds.Select(r => r.RoundId).ToList();
+
+            context.Golfers.AddRange(
+                new Golfer
+                {
+                    FirstName = "Jim",
+                    LastName = "Mansmann",
+                    Sex = Sex.Male,
+                    //RoundsPlayed = context.Rounds.Where(r => r.RoundId == roundsIdList.FirstOrDefault()).ToList()
+                },
+                new Golfer
+                {
+                    FirstName = "Seth",
+                    LastName = "Bowser",
+                    Sex = Sex.Male,
+                    //RoundsPlayed = context.Rounds.Where(r => r.RoundId == roundsIdList.ElementAt(2)).ToList()
+                },
+                new Golfer
+                {
+                    FirstName = "Kristen",
+                    LastName = "Zulli",
+                    Sex = Sex.Female,
+                    //RoundsPlayed = context.Rounds.Where(r => r.RoundId == roundsIdList.ElementAt(3)).ToList()
+                }
+                );
+        }
+
 
         private static void InitializeSomeHoles(CourseContext context)
         {
@@ -81,52 +168,62 @@ namespace GolfApp.Data
             {
                 return;
             }
+            var courseIdList = context.Courses.Select(c => c.CourseId).ToList();
 
             context.Holes.AddRange(
                 new Hole
                 {
                     Num = 1,
-                    Par = 3
+                    Par = 3,
+                    CourseId = courseIdList.ElementAt(1)
                 },
                 new Hole
                 {
                     Num = 2,
-                    Par = 4
+                    Par = 4,
+                    CourseId = courseIdList.ElementAt(1)
                 },
                 new Hole
                 {
                     Num = 3,
-                    Par = 5
+                    Par = 5,
+                    CourseId = courseIdList.ElementAt(1)
                 },
                 new Hole
                 {
                     Num = 4,
-                    Par = 4
+                    Par = 4,
+                    CourseId = courseIdList.ElementAt(1)
                 },
                 new Hole
                 {
                     Num = 5,
-                    Par = 4
+                    Par = 4,
+                    CourseId = courseIdList.ElementAt(1)
                 },
                 new Hole
                 {
                     Num = 6,
-                    Par = 3
+                    Par = 3,
+                    CourseId = courseIdList.ElementAt(1)
                 },
                 new Hole
                 {
                     Num = 7,
-                    Par = 5
+                    Par = 5,
+                    CourseId = courseIdList.ElementAt(1)
                 },
                 new Hole
                 {
                     Num = 8,
-                    Par = 5
+                    Par = 5,
+                    CourseId = courseIdList.ElementAt(1)
                 },
                 new Hole
                 {
                     Num = 9,
-                    Par = 3
+                    Par = 3,
+                    CourseId = courseIdList.ElementAt(1)
                 },
                 new Hole
                 {

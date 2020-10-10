@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jimmy\\Documents\\golf_app\\GolfApp\\GolfApp\\GolfApp.csproj": {}
+    "C:\\Users\\jimmy\\Documents\\golf_app\\GolfApp\\GolfApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jimmy\\Documents\\golf_app\\GolfApp\\GolfApp\\GolfApp.csproj": {
+    "C:\\Users\\jimmy\\Documents\\golf_app\\GolfApp\\GolfApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jimmy\\Documents\\golf_app\\GolfApp\\GolfApp\\GolfApp.csproj",
+        "projectUniqueName": "C:\\Users\\jimmy\\Documents\\golf_app\\GolfApp\\GolfApp.csproj",
         "projectName": "GolfApp",
-        "projectPath": "C:\\Users\\Jimmy\\Documents\\golf_app\\GolfApp\\GolfApp\\GolfApp.csproj",
-        "packagesPath": "C:\\Users\\Jimmy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jimmy\\Documents\\golf_app\\GolfApp\\GolfApp\\obj\\",
+        "projectPath": "C:\\Users\\jimmy\\Documents\\golf_app\\GolfApp\\GolfApp.csproj",
+        "packagesPath": "C:\\Users\\jimmy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jimmy\\Documents\\golf_app\\GolfApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jimmy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jimmy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,27 +43,27 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.7, )"
+              "version": "[3.1.8, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.7, )"
+              "version": "[3.1.8, )"
             },
             "Microsoft.EntityFrameworkCore.SQLite": {
               "target": "Package",
-              "version": "[3.1.7, )"
+              "version": "[3.1.8, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.7, )"
+              "version": "[3.1.8, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.7, )"
+              "version": "[3.1.8, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -88,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
